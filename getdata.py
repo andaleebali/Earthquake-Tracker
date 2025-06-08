@@ -5,7 +5,6 @@ from datetime import datetime
 from dash import Dash, html, dcc
 from dash.dependencies import Input, Output
 
-
 def get_earthquake_data():
     url = "https://api.geonet.org.nz/quake?MMI=1"
     response = requests.get(url)
@@ -49,7 +48,6 @@ dcc.Interval(
 
 app.layout = html.Div([
     html.H1("🌀 Real-Time NZ Earthquake Dashboard"),
-    dcc.Graph(id="quake-map"),
     # Magnitude filter slider
     html.Label("Minimum Magnitude:"),
     dcc.Slider(
@@ -60,6 +58,17 @@ app.layout = html.Div([
         value=1,
         marks={i: str(i) for i in range(11)},
     ),
+    # Depth filter slider
+    html.Label("Minimum Depth:"),
+    dcc.Slider(
+        id="depth-slider",
+        min=0,
+        max=100,
+        step=0.1,
+        value=1,
+        marks={i: str(i) for i in range(0,101,10)},
+    ),
+    dcc.Graph(id="quake-map"),
     dcc.Graph(id="fig"),
     dcc.Graph(id="time-series"),
     html.Div(id="last-updated", style={"fontSize": "0.9em", "color": "gray", "marginTop": "10px"}),
@@ -73,15 +82,16 @@ app.layout = html.Div([
     Output("time-series", "figure"),
     Output("last-updated", "children"),
     Input("interval-component", "n_intervals"),  # Dummy trigger to run once
-    Input("magnitude-slider", "value")
+    Input("magnitude-slider", "value"),
+    Input("depth-slider", "value")
 )
 
 
-def update_map(n_intervals, min_magnitude):
+def update_map(n_intervals, min_magnitude, min_depth):
     df = get_earthquake_data()
 
     filtered_df = df[
-        df["magnitude"]>=min_magnitude
+        (df["magnitude"]>=min_magnitude) & (df["magnitude"]>=min_depth)
     ] 
 
     map=px.scatter_map(
