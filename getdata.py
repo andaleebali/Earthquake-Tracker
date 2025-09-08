@@ -41,21 +41,18 @@ def filter_earthquakes(df, min_magnitude, max_depth, time_range_hours):
     return filtered_df
 
 def summary_stats(df):
-    
-    # total quakes
+    if df.empty:
+        return 0, None, None
+
     row_count = df.shape[0]
-    
-    # largest magnitude quake
     largest_magnitude = df['magnitude'].max()
+    most_recent_row = df.loc[df['time'].idxmax()]
+    most_recent_time = most_recent_row["time"].strftime("%d-%m-%Y %H:%M:%S")
+    most_recent_location = most_recent_row["locality"]
 
-    # most recent quake
-    df['time'] = pd.to_datetime(df['time'])
-    most_recent = df.loc[df['time'].idxmax()]
-    most_recent_time = most_recent["time"].strftime("%d-%m-%Y %H:%M:%S")
-    most_recent_location = most_recent["locality"]
+    most_recent = (most_recent_time, most_recent_location)
 
-    return f"Total Quakes: {row_count}", f"Largest Magnitude: {largest_magnitude}", f"Most Recent: {most_recent_time} {most_recent_location}"
-
+    return row_count, largest_magnitude, most_recent
 
 if __name__=='__main__':
     df = get_earthquake_data()
