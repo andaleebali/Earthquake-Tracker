@@ -1,10 +1,27 @@
-# getdata.py
+'''
+Functions for ingesting, cleaning, and summarising earthquake data 
+from GeoNet API. Provides filtering and summary stats 
+to support the dashboard.
+'''
 
 import requests
 import pandas as pd
 from datetime import datetime, timedelta, timezone
 
 def get_earthquake_data():
+    '''
+    Fetches data from GeoNet API
+
+    Returns:
+        df (dataframe): contains earthquake records
+        - publicID (str): Unique event ID
+        - time (datetime): Event timestamp (UTC)
+        - magnitude (float): Richter scale magnitude
+        - depth (float): Depth in km
+        - locality (str): Nearest named place
+        - lat, lon (float): Event coordinates
+    '''
+    
     url = "https://api.geonet.org.nz/quake?MMI=1"
     response = requests.get(url)
     data = response.json()
@@ -30,6 +47,23 @@ def get_earthquake_data():
     return df
 
 def filter_earthquakes(df, min_magnitude, max_depth, time_range_hours):
+    '''
+    Filters earthquakes by magnitude, depth, and recency.
+
+    Parameters:
+        df : pd.DataFrame
+            Earthquake records from get_earthquake_data()
+        min_magnitude : float
+            Minimum magnitude threshold
+        max_depth : float
+            Maximum depth in km
+        time_range_hours : int
+            Number of hours to look back from now
+
+    Returns:
+        pd.DataFrame
+            Filtered earthquakes
+    '''
     time_threshold = datetime.now(timezone.utc) - timedelta(hours=time_range_hours)
 
     filtered_df = df[
@@ -41,6 +75,21 @@ def filter_earthquakes(df, min_magnitude, max_depth, time_range_hours):
     return filtered_df
 
 def summary_stats(df):
+    '''
+    Summarises dataset
+
+    Parameters:
+        df : pd.DataFrame
+            Earthquake records
+    
+    Returns:
+        row_count : int
+
+        largest_magnitude : float
+        
+        most_recent : tuple
+    
+    '''
     if df.empty:
         return 0, None, None
 
