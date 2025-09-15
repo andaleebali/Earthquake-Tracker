@@ -7,6 +7,7 @@ to support the dashboard.
 import requests
 import pandas as pd
 from datetime import datetime, timedelta, timezone
+import json
 
 def get_earthquake_data():
     '''
@@ -103,8 +104,26 @@ def summary_stats(df):
 
     return row_count, largest_magnitude, most_recent
 
+def save_to_json(df):
+    '''
+    Saves new earthquake records to JSON file
+    
+    Parameters:
+        df : pd.DataFrame
+            Earthquake records
+
+    '''
+    df['time'] = pd.to_datetime(df['time'])
+    df['time'] = df['time'].dt.strftime('%Y-%m-%dT%H:%M:%S')
+
+    data = df.to_dict(orient='records')
+
+    with open ('earthquakes.json', 'w') as f:
+        json.dump(data, f, indent=3)
+
 if __name__=='__main__':
     df = get_earthquake_data()
-    print(df)
+    j = save_to_json(df)
+    print(j)
     rowcount, largestmagnitude, most_recent_time = summary_stats(df)
     print(rowcount, largestmagnitude, most_recent_time)
