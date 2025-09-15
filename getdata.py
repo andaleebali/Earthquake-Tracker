@@ -5,11 +5,11 @@ from GeoNet API.
 
 import requests
 import pandas as pd
-from datetime import datetime, timedelta, timezone
 import json
+import os
 
 def get_earthquake_data():
-    '''
+    """
     Fetches data from GeoNet API
 
     Returns:
@@ -20,7 +20,7 @@ def get_earthquake_data():
         - depth (float): Depth in km
         - locality (str): Nearest named place
         - lat, lon (float): Event coordinates
-    '''
+    """
     
     url = "https://api.geonet.org.nz/quake?MMI=1"
     response = requests.get(url)
@@ -46,7 +46,20 @@ def get_earthquake_data():
     df["time"] = pd.to_datetime(df["time"])
     return df
 
-def save_to_json(df):
+def load_json(file):
+    if os.path.exists(file):
+        try:
+            with open (file, 'r') as f:
+                return json.load(f)
+        except json.JSONDecodeError:
+            print("JSON file invalid. Starting new file.")
+            return []
+    else:
+        return []
+
+
+
+def save_to_json(df, filepath="earthquakes.json"):
     '''
     Saves new earthquake records to JSON file
     
@@ -58,10 +71,19 @@ def save_to_json(df):
     df['time'] = pd.to_datetime(df['time'])
     df['time'] = df['time'].dt.strftime('%Y-%m-%dT%H:%M:%S')
 
-    data = df.to_dict(orient='records')
+    new_records = df.to_dict(orient='records')
 
-    with open ('earthquakes.json', 'w') as f:
-        json.dump(data, f, indent=3)
+    existing_records = load_json(filepath)
+
+    updated_records = {r["publicID"]: r for r in existing_records}
+    for r in new_records:
+        updated_records[r["publicID"]] = r   # update or add
+
+    # Save back to file
+    with open(filepath, "w") as f:
+        json.dump(updated_records, f, indent=2)
+
+    return updated_records
 
 if __name__=='__main__':
     df = get_earthquake_data()
