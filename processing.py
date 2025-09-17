@@ -2,8 +2,7 @@
 processing.py
 Provides filtering and summary stats to support the dashboard.
 """
-
-from datetime import datetime, timedelta, timezone
+import pandas as pd
 
 def filter_earthquakes(df, min_magnitude, max_depth, time_range_hours):
     """
@@ -23,7 +22,9 @@ def filter_earthquakes(df, min_magnitude, max_depth, time_range_hours):
         pd.DataFrame
             Filtered earthquakes
     """
-    time_threshold = datetime.now(timezone.utc) - timedelta(hours=time_range_hours)
+    time_threshold = pd.Timestamp("now", tz="UTC") - pd.Timedelta(hours=time_range_hours)
+
+    df['time'] = pd.to_datetime(df['time'], utc=True)
 
     filtered_df = df[
         (df["magnitude"] >= min_magnitude) &
