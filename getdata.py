@@ -72,20 +72,25 @@ def save_to_json(df, filepath="earthquakes.json"):
     df['time'] = df['time'].dt.strftime('%Y-%m-%dT%H:%M:%S')
 
     new_records = df.to_dict(orient='records')
-
     existing_records = load_json(filepath)
+    if not isinstance(existing_records, list):
+        existing_records = []
 
     updated_records = {r["publicID"]: r for r in existing_records}
     for r in new_records:
         updated_records[r["publicID"]] = r   # update or add
 
+    merged = list(updated_records.values())
+
+
     # Save back to file
     with open(filepath, "w") as f:
-        json.dump(updated_records, f, indent=2)
+        json.dump(merged, f, indent=2)
 
-    return updated_records
+    return merged
 
 if __name__=='__main__':
     df = get_earthquake_data()
     j = save_to_json(df)
+
     print(j)
