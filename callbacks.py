@@ -6,6 +6,7 @@ from getdata import load_json
 from processing import filter_earthquakes, summary_stats
 from visuals import earthquake_map, magnitude_vs_depth, magnitude_over_time
 import pandas as pd
+from database import fetch_earthquakes
 
 def register_callbacks(app):
 
@@ -22,7 +23,7 @@ def register_callbacks(app):
     )
     def update_dashboard(n_intervals, min_magnitude, max_depth, time_range_hours):
         
-        records = load_json(file='earthquakes.json')
+        records = fetch_earthquakes()
     
         df = pd.DataFrame(records)
 
