@@ -2,11 +2,10 @@
 from dash.dependencies import Input, Output
 from datetime import datetime
 from dash import html
-from getdata import load_json
-from processing import filter_earthquakes, summary_stats
+from backend.processing import filter_earthquakes, summary_stats
 from visuals import earthquake_map, magnitude_vs_depth, magnitude_over_time
 import pandas as pd
-from database import fetch_earthquakes
+from backend.database import fetch_earthquakes
 
 def register_callbacks(app):
 

@@ -1,3 +1,4 @@
+# database.py
 import pandas as pd
 from sqlalchemy import create_engine, text
 import os
@@ -81,7 +82,7 @@ def fetch_earthquakes():
 
 
 if __name__ == "__main__":
-    from getdata import get_earthquake_data
+    from backend.getdata import get_earthquake_data
     ensure_database_exists()
     initiate_database()
     df = get_earthquake_data()

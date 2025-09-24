@@ -1,6 +1,4 @@
-import psycopg2
-from psycopg2.extras import execute_values
-from getdata import get_earthquake_data
+from backend.getdata import get_earthquake_data
 from dotenv import load_dotenv
 import os
 from sqlalchemy import create_engine, text
