@@ -13,7 +13,9 @@ def register_callbacks(app):
         Output("quake-map", "figure"),
         Output("fig", "figure"),
         Output("time-series", "figure"),
-        Output("summary-stats", "children"),
+        Output("quake-count", "children"),
+        Output("large-mag", "children"),
+        Output("most-recent", "children"),
         Output("last-updated", "children"),
         Input("interval-component", "n_intervals"),
         Input("magnitude-slider", "value"),
@@ -30,18 +32,14 @@ def register_callbacks(app):
 
         quake_count, larg_mag, most_recent = summary_stats(filtered_df)
 
-        stats_div = html.Div([
-            html.H3(quake_count),
-            html.H3(larg_mag),
-            html.H3(most_recent)
-        ])
-
         last_updated_str = f"Last updated at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
 
         return (
             earthquake_map(filtered_df), 
             magnitude_vs_depth(filtered_df), 
             magnitude_over_time(filtered_df), 
-            stats_div, 
+            quake_count,
+            larg_mag,
+            most_recent, 
             last_updated_str
         )

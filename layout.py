@@ -6,7 +6,34 @@ def dashboard_layout():
         
         html.H1("Real-Time NZ Earthquake Dashboard"),
         
-        html.Div(id="summary-stats", style={"marginBottom": "20px"}),
+        html.Div([
+            # earthquake count
+            html.Div([
+                html.H4("Total Quakes"),
+                html.Div(id="quake-count")],
+                className="indicator",
+                style={"backgroundColor": "#243649"}
+            ),
+            
+            # largest magnitude
+            html.Div([
+                html.H4("Largest Magnitude"),
+                html.Div(id="large-mag")],
+                className="indicator",
+                style={"background-color":"#712f2c"}),
+            
+            # most recent earthquke
+            html.Div([
+                html.H4("Most Recent"),
+                html.Div(id="most-recent")], 
+                className="indicator",
+                style={"background-color":"#1d3f45"}),
+            ],         
+            style={
+                "padding":"10px",
+                "background-color": "#1a1f26",
+                "display": "flex",
+                "justifyContent": "center"}),
 
         # Filters
         html.Div([
@@ -38,18 +65,21 @@ def dashboard_layout():
                         {"label": "7 Days", "value": 168},
                     ],
                     value=24,
-                    clearable=False
-                ), ], style={"flex": 1, "padding": "0 10px"}),
-            ], style={"display": "flex", "marginBottom": "20px"}),
+                    clearable=False,
+                    style={"background-color":"#1a1f26"}
+                ), ], 
+                style={"flex": 1, "padding": "0 10px"}),
+        ], style={"display": "flex", "marginBottom": "20px"}),
 
         dcc.Graph(id="quake-map"),
         dcc.Graph(id="fig"),
         dcc.Graph(id="time-series"),
 
-        html.Div(id="last-updated", style={"fontSize": "0.9em", "color": "gray", "marginTop": "10px"}),
-        html.P("Data source: GeoNet API", style={"fontSize": "0.9em", "color": "gray"}),
+        html.Div(id="last-updated", style={"fontSize": "0.9em", "marginTop": "10px"}),
+        html.P("Data source: GeoNet API", style={"fontSize": "0.9em"}),
 
         dcc.Interval(id="interval-component", interval=5*60*1000, n_intervals=0)
-    ])
+    ],
+    )
 
     return layout
