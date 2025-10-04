@@ -110,11 +110,53 @@ async function updateSummary(
   document.querySelector("#most-recent-value").innerText = stats.most_recent ? 
     `${stats.most_recent[0]} (${stats.most_recent[1]})` : "—";
 }
+
+// ====================
+// Update Table
+// ====================
+
+async function updateTable(
+  minMag = magSlider.value, 
+  maxDepth = depthSlider.value, 
+  numHours = timeRange.value
+) {
+  const url = `/api/earthquakes?min_magnitude=${minMag}&max_depth=${maxDepth}&time_range_hours=${numHours}`;
+  const response = await fetch(url);
+  const quakes = await response.json();
+
+  const tbody = document.querySelector("#quake-table tbody");
+  tbody.innerHTML = ""; // clear previous rows
+
+  quakes.forEach((eq, index) => {
+    const tr = document.createElement("tr");
+    tr.dataset.rownum = index + 1;
+
+    // Create table cells
+    const tdNum = document.createElement("td");
+    tdNum.innerText = index + 1;
+    const tdMag = document.createElement("td");
+    tdMag.innerText = eq.magnitude.toFixed(2);
+    const tdDepth = document.createElement("td");
+    tdDepth.innerText = eq.depth.toFixed(1);
+    const tdTime = document.createElement("td");
+    tdTime.innerText = eq.time;
+    const tdLocality = document.createElement("td");
+    tdLocality.innerText = eq.locality;
+
+    // Append all cells to row
+    tr.append(tdNum, tdMag, tdDepth, tdTime, tdLocality);
+
+    // Append row to table body
+    tbody.appendChild(tr);
+  });
+}
+
 // ====================
 // Load data
 // ====================
 loadEarthquakes();
 updateSummary();
+updateTable();
 
 // ====================
 // Update when filters move
@@ -123,18 +165,21 @@ magSlider.oninput = function () {
   magOutput.innerText = this.value;
   loadEarthquakes();
   updateSummary();
+  updateTable();
 };
 
 depthSlider.oninput = function () {
   depthOutput.innerText = this.value;
   loadEarthquakes();
   updateSummary();
+  updateTable();
 };
 
 timeRange.oninput = function () {
   timeOutput.innerText = this.value;
   loadEarthquakes();
   updateSummary();
+  updateTable();
 };
 
 console.log("✅ JS file loaded");

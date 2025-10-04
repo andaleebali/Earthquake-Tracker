@@ -3,80 +3,104 @@
     <head>
         <meta charset="UTF-8"/>
         <title>Earthquakes Tracker</title>
+        <!-- Leaflet -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <!-- Google Font-->
+        <link href="https://fonts.googleapis.com/css2?family=Nunito Sans:wght@400;600&display=swap" rel="stylesheet">
+        <!-- CSS -->
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
         <header>
             <h1>New Zealand Earthquake Tracker</h1>
         </header>
-        <div class="indicators">
-            <div class="indicator" id="total-quakes-ind" style="background-color: #243649">
-                <h3>Total Quakes</h3>
-                <h4 id="total-quakes-value">No Data</h4>
+        <div style="display: flex; flex-wrap: wrap;">
+            <div class="indicators">
+                <div class="indicator" id="total-quakes-ind" style="background-color: rgba(36, 54, 73,0.5)">
+                    <h3>Total Quakes</h3>
+                    <h4 id="total-quakes-value">No Data</h4>
+                </div>
+                <div class="indicator" id="largest-mag-ind" style="background-color: #712f2c">
+                    <h3>Largest Magnitude</h3>
+                    <h4 id="largest-mag-value">No Data</h4>
+                </div>
+                <div class="indicator" id="most-recent-ind" style="background-color: #243649">
+                    <h3>Most Recent</h3>
+                    <h4 id="most-recent-value">No Data</h4>
+                </div>
             </div>
-            <div class="indicator" id="largest-mag-ind" style="background-color: #712f2c">
-                <h3>Largest Magnitude</h3>
-                <h4 id="largest-mag-value">No Data</h4>
-            </div>
-            <div class="indicator" id="most-recent-ind" style="background-color: #1d3f45">
-                <h3>Most Recent</h3>
-                <h4 id="most-recent-value">No Data</h4>
+            <div style="display: flex; flex-direction: column; flex:1">
+                <div class="filters">
+                    <div class="filter" id="mag-slider">
+                        <h3>Minimum Magnitude:</h3>
+                        <input type="range" min="0" max="10" value="1" step="1" class="slider" id="mag-range">
+                        <!-- Number labels -->
+                        <div class="slider-labels">
+                            <span>0</span>
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                            <span>7</span>
+                            <span>8</span>
+                            <span>9</span>
+                            <span>10</span>
+                        </div>
+                        <p>Selected Magnitude: <span id="mag-value">1</span></p>
+                    </div>
+                    <div class="filter"  id="depth-slider">
+                        <h3>Maximum Depth (km):</h3>
+                        <input type="range" min="0" max="100" value="40" step="10" class="slider" id="depth-range">
+                        <!-- Number labels -->
+                        <div class="slider-labels">
+                            <span>0</span>
+                            <span>10</span>
+                            <span>20</span>
+                            <span>30</span>
+                            <span>40</span>
+                            <span>50</span>
+                            <span>60</span>
+                            <span>70</span>
+                            <span>80</span>
+                            <span>90</span>
+                            <span>100</span>
+                        </div>
+                        <p>Selected Magnitude: <span id="depth-value">40</span></p>
+                    </div>
+                    <div class="filter">
+                        <h3>Time Range (last X hours):</h3>
+                        <select id="time-range">
+                            <option value="1">1 Hour</option>
+                            <option value="6">6 Hours</option>
+                            <option value="12">12 Hours</option>
+                            <option value="24" selected>24 Hours</option>
+                            <option value="168">7 Days</option>
+                        </select>
+                        <p>Selected Time: <span id="time-value">24</span></p>
+                    </div>
+                </div>
+                <div id="map"></div>
             </div>
         </div>
-        <div class="filters">
-            <div class="filter" id="mag-slider">
-                <h3>Minimum Magnitude:</h3>
-                <input type="range" min="0" max="10" value="1" step="1" class="slider" id="mag-range">
-                <!-- Number labels -->
-                <div class="slider-labels">
-                    <span>0</span>
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                    <span>6</span>
-                    <span>7</span>
-                    <span>8</span>
-                    <span>9</span>
-                    <span>10</span>
-                </div>
-                <p>Selected Magnitude: <span id="mag-value">1</span></p>
-            </div>
-             <div class="filter"  id="depth-slider">
-                <h3>Maximum Depth (km):</h3>
-                <input type="range" min="0" max="100" value="40" step="10" class="slider" id="depth-range">
-                <!-- Number labels -->
-                <div class="slider-labels">
-                    <span>0</span>
-                    <span>10</span>
-                    <span>20</span>
-                    <span>30</span>
-                    <span>40</span>
-                    <span>50</span>
-                    <span>60</span>
-                    <span>70</span>
-                    <span>80</span>
-                    <span>90</span>
-                    <span>100</span>
-                </div>
-                <p>Selected Magnitude: <span id="depth-value">40</span></p>
-            </div>
-            <div class="filter">
-                <h3>Time Range (last X hours):</h3>
-                <select id="time-range">
-                    <option value="1">1 Hour</option>
-                    <option value="6">6 Hours</option>
-                    <option value="12">12 Hours</option>
-                    <option value="24" selected>24 Hours</option>
-                    <option value="168">7 Days</option>
-                </select>
-                <p>Selected Time: <span id="time-value">24</span></p>
-            </div>
+        <div class="table-container">
+        <table id="quake-table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Magnitude</th>
+                <th>Depth (km)</th>
+                <th>Time</th>
+                <th>Locality</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Rows will be injected here -->
+            </tbody>
+        </table>
         </div>
-        <div id="map"></div>
         <script src="{{ url_for('static', filename='script.js') }}"></script>
     </body>
 </html>
