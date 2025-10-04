@@ -1,5 +1,4 @@
 from flask import Flask, render_template, jsonify, request
-import pandas as pd
 from backend.database import fetch_earthquakes
 from backend.processing import filter_earthquakes, summary_stats
 
