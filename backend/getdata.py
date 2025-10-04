@@ -43,7 +43,7 @@ def get_earthquake_data():
         })
 
     df = pd.DataFrame(records)
-    df["time"] = pd.to_datetime(df["time"])
+    df["time"] = pd.to_datetime(df["time"], format="%Y-%m-%dT%H:%M:%S.%fZ", utc=True)
     return df
 
 def load_json(file):
