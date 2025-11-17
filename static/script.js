@@ -1,185 +1,134 @@
 // ====================
-// Initialise map
+// Wait for DOM to load
 // ====================
-const map = L.map("map").setView([-40.9, 174.9], 5);
+document.addEventListener("DOMContentLoaded", () => {
+    // Grab filter elements
+    const magSlider = document.getElementById("mag-range");
+    const depthSlider = document.getElementById("depth-range");
+    const timeRange = document.getElementById("time-range");
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution:
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-}).addTo(map);
+    const magOutput = document.getElementById("mag-value");
+    const depthOutput = document.getElementById("depth-value");
+    const timeOutput = document.getElementById("time-value");
 
-// ====================
-// Grab filter elements
-// ====================
-const magSlider = document.getElementById("mag-range");
-const magOutput = document.getElementById("mag-value");
+    // Update displayed values initially
+    magOutput.innerText = magSlider.value;
+    depthOutput.innerText = depthSlider.value;
+    timeOutput.innerText = timeRange.value;
 
-const depthSlider = document.getElementById("depth-range");
-const depthOutput = document.getElementById("depth-value");
+    // Initialize map once
+    const map = L.map('map', {
+        worldCopyJump: false,
+        maxBounds: [
+            [-90, -180],
+            [90, 180]
+        ],
+        maxBoundsViscosity: 1.0
+    }).setView([-41.5, 174], 5);
 
-const timeRange = document.getElementById("time-range");
-const timeOutput = document.getElementById("time-value");
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
 
-// Show starting values
-magOutput.innerText = magSlider.value;
-depthOutput.innerText = depthSlider.value;
-timeOutput.innerText = timeRange.value;
+    // Layer for earthquake markers
+    const quakeLayer = L.layerGroup().addTo(map);
 
-// Update values when sliders move
-magSlider.oninput = function () {
-  magOutput.innerText = this.value;
-  loadEarthquakes();
-};
+    // ====================
+    // Depth color function
+    // ====================
+    function getDepthColor(depth) {
+        return depth > 70
+            ? "#d73027"
+            : depth > 40
+            ? "#fc8d59"
+            : depth > 20
+            ? "#fee08b"
+            : "#91cf60";
+    }
 
-depthSlider.oninput = function () {
-  depthOutput.innerText = this.value;
-  loadEarthquakes();
-};
+    // ====================
+    // Load earthquakes
+    // ====================
+    async function loadEarthquakes() {
+        const minMag = magSlider.value;
+        const maxDepth = depthSlider.value;
+        const numHours = timeRange.value;
 
-timeRange.oninput = function () {
-  timeOutput.innerText = this.value;
-  loadEarthquakes();
-};
+        quakeLayer.clearLayers();
 
-// ====================
-// Set Depth colours
-// ====================
-function getDepthColor(depth) {
-  return depth > 70
-    ? "#d73027"
-    : depth > 40
-    ? "#fc8d59"
-    : depth > 20
-    ? "#fee08b"
-    : "#91cf60";
-}
-// ====================
-// Setup Earthquake Layer
-// ====================
-let quakeLayer = L.layerGroup().addTo(map);
+        const url = `/api/earthquakes?min_magnitude=${minMag}&max_depth=${maxDepth}&time_range_hours=${numHours}`;
+        try {
+            const response = await fetch(url);
+            const quakes = await response.json();
 
-// Fetch and draw earthquakes
-async function loadEarthquakes(
-  minMag = magSlider.value,
-  maxDepth = depthSlider.value,
-  numHours = timeRange.value
-) {
-  // Clear old markers
-  quakeLayer.clearLayers();
+            quakes.forEach(eq => {
+                const circle = L.circleMarker([eq.lat, eq.lon], {
+                    radius: Math.max(eq.depth / 10, 4),
+                    fillColor: getDepthColor(eq.depth),
+                    color: "#00000040",
+                    weight: 1,
+                    fillOpacity: 0.8
+                }).addTo(quakeLayer);
 
-  const url = `/api/earthquakes?min_magnitude=${minMag}&max_depth=${maxDepth}&time_range_hours=${numHours}`;
-  console.log("Fetching:", url);
+                circle.bindPopup(
+                    `<b>${eq.locality}</b><br>
+                     Mag: ${eq.magnitude.toFixed(2)}<br>
+                     Depth: ${eq.depth.toFixed(1)} km<br>
+                     Time: ${eq.time}`
+                );
+            });
+        } catch (err) {
+            console.error("Failed to load earthquakes:", err);
+        }
+    }
 
-  const response = await fetch(url);
-  const quakes = await response.json();
+    // ====================
+    // Update summary stats
+    // ====================
+    async function updateSummary() {
+        const minMag = magSlider.value;
+        const maxDepth = depthSlider.value;
+        const numHours = timeRange.value;
 
-  quakes.forEach((eq) => {
-    const circle = L.circleMarker([eq.lat, eq.lon], {
-      radius: eq.magnitude * 2,
-      fillColor: getDepthColor(eq.depth),
-      color: "#000",
-      weight: 1,
-      opacity: 1,
-      fillOpacity: 0.7,
-    }).addTo(quakeLayer);
+        const url = `/api/summary?min_magnitude=${minMag}&max_depth=${maxDepth}&time_range_hours=${numHours}`;
+        try {
+            const response = await fetch(url);
+            const stats = await response.json();
 
-    circle.bindPopup(
-      `<b>${eq.locality}</b><br>
-       Mag: ${eq.magnitude.toFixed(2)}<br>
-       Depth: ${eq.depth.toFixed(1)} km<br>
-       Time: ${eq.time}`
-    );
-  });
-}
+            document.querySelector("#total-quakes-value").innerText = stats.total || 0;
+            document.querySelector("#largest-mag-value").innerText = stats.largest ? stats.largest.toFixed(1) : "—";
+            document.querySelector("#most-recent-value").innerText = stats.most_recent
+                ? `${stats.most_recent[0]} (${stats.most_recent[1]})`
+                : "—";
+        } catch (err) {
+            console.error("Failed to load summary:", err);
+        }
+    }
 
+    // ====================
+    // Refresh dashboard
+    // ====================
+    async function refreshDashboard() {
+        magOutput.innerText = magSlider.value;
+        depthOutput.innerText = depthSlider.value;
+        timeOutput.innerText = timeRange.value;
 
-// ====================
-// Fetch and Update Stats
-// ====================
-async function updateSummary(
-  minMag = magSlider.value, 
-  maxDepth = depthSlider.value, 
-  numHours = timeRange.value) {
-  const url = `/api/summary?min_magnitude=${minMag}&max_depth=${maxDepth}&time_range_hours=${numHours}`;
-  const response = await fetch(url);
-  const stats = await response.json();
+        await loadEarthquakes();
+        await updateSummary();
+        // Add chart update calls if needed:
+        // updateTable();
+        // updateChart();
+    }
 
-  document.querySelector("#total-quakes-value").innerText = stats.total || 0;
-  document.querySelector("#largest-mag-value").innerText = stats.largest ? stats.largest.toFixed(1) : "—";
-  document.querySelector("#most-recent-value").innerText = stats.most_recent ? 
-    `${stats.most_recent[0]} (${stats.most_recent[1]})` : "—";
-}
+    // ====================
+    // Event listeners
+    // ====================
+    magSlider.addEventListener("input", refreshDashboard);
+    depthSlider.addEventListener("input", refreshDashboard);
+    timeRange.addEventListener("change", refreshDashboard);
 
-// ====================
-// Update Table
-// ====================
-
-async function updateTable(
-  minMag = magSlider.value, 
-  maxDepth = depthSlider.value, 
-  numHours = timeRange.value
-) {
-  const url = `/api/earthquakes?min_magnitude=${minMag}&max_depth=${maxDepth}&time_range_hours=${numHours}`;
-  const response = await fetch(url);
-  const quakes = await response.json();
-
-  const tbody = document.querySelector("#quake-table tbody");
-  tbody.innerHTML = ""; // clear previous rows
-
-  quakes.forEach((eq, index) => {
-    const tr = document.createElement("tr");
-    tr.dataset.rownum = index + 1;
-
-    // Create table cells
-    const tdNum = document.createElement("td");
-    tdNum.innerText = index + 1;
-    const tdMag = document.createElement("td");
-    tdMag.innerText = eq.magnitude.toFixed(2);
-    const tdDepth = document.createElement("td");
-    tdDepth.innerText = eq.depth.toFixed(1);
-    const tdTime = document.createElement("td");
-    tdTime.innerText = eq.time;
-    const tdLocality = document.createElement("td");
-    tdLocality.innerText = eq.locality;
-
-    // Append all cells to row
-    tr.append(tdNum, tdMag, tdDepth, tdTime, tdLocality);
-
-    // Append row to table body
-    tbody.appendChild(tr);
-  });
-}
-
-// ====================
-// Load data
-// ====================
-loadEarthquakes();
-updateSummary();
-updateTable();
-
-// ====================
-// Update when filters move
-// ====================
-magSlider.oninput = function () {
-  magOutput.innerText = this.value;
-  loadEarthquakes();
-  updateSummary();
-  updateTable();
-};
-
-depthSlider.oninput = function () {
-  depthOutput.innerText = this.value;
-  loadEarthquakes();
-  updateSummary();
-  updateTable();
-};
-
-timeRange.oninput = function () {
-  timeOutput.innerText = this.value;
-  loadEarthquakes();
-  updateSummary();
-  updateTable();
-};
-
-console.log("✅ JS file loaded");
+    // Initial load
+    refreshDashboard();
+    console.log("✅ Dashboard JS loaded");
+});

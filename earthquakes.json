@@ -1,0 +1,884 @@
+[
+  {
+    "publicID": "2025p806826",
+    "time": "2025-10-26T12:37:15",
+    "magnitude": 1.5033698539954417,
+    "depth": 26.55038261413574,
+    "locality": "5 km south of Napier",
+    "lat": -39.574806213,
+    "lon": 176.923446655
+  },
+  {
+    "publicID": "2025p806818",
+    "time": "2025-10-26T12:32:46",
+    "magnitude": 1.5612499927450376,
+    "depth": 21.072248458862305,
+    "locality": "5 km south-east of Napier",
+    "lat": -39.546897888,
+    "lon": 176.934906006
+  },
+  {
+    "publicID": "2025p806773",
+    "time": "2025-10-26T12:08:40",
+    "magnitude": 4.46968641925892,
+    "depth": 24.1035213470459,
+    "locality": "5 km south of Napier",
+    "lat": -39.570644379,
+    "lon": 176.922607422
+  },
+  {
+    "publicID": "2025p806765",
+    "time": "2025-10-26T12:04:28",
+    "magnitude": 1.559850731929868,
+    "depth": 22.254215240478516,
+    "locality": "5 km south of Napier",
+    "lat": -39.582313538,
+    "lon": 176.91545105
+  },
+  {
+    "publicID": "2025p806717",
+    "time": "2025-10-26T11:39:11",
+    "magnitude": 2.050409616540397,
+    "depth": 3.747943639755249,
+    "locality": "15 km south-west of Turangi",
+    "lat": -39.130802155,
+    "lon": 175.653747559
+  },
+  {
+    "publicID": "2025p806637",
+    "time": "2025-10-26T10:56:39",
+    "magnitude": 2.3488776345140123,
+    "depth": 17.680984497070312,
+    "locality": "50 km north-west of Ohakune",
+    "lat": -39.229492188,
+    "lon": 174.887084961
+  },
+  {
+    "publicID": "2025p806532",
+    "time": "2025-10-26T10:00:21",
+    "magnitude": 1.9457523121656848,
+    "depth": 36.2968864440918,
+    "locality": "15 km south of Dannevirke",
+    "lat": -40.366771698,
+    "lon": 176.111480713
+  },
+  {
+    "publicID": "2025p806527",
+    "time": "2025-10-26T09:58:06",
+    "magnitude": 1.9127359400114992,
+    "depth": 21.654052734375,
+    "locality": "5 km south of Napier",
+    "lat": -39.567790985,
+    "lon": 176.911422729
+  },
+  {
+    "publicID": "2025p806389",
+    "time": "2025-10-26T08:44:09",
+    "magnitude": 1.8797902324619435,
+    "depth": 22.56389045715332,
+    "locality": "15 km north of Gisborne",
+    "lat": -38.517036438,
+    "lon": 177.959838867
+  },
+  {
+    "publicID": "2025p806309",
+    "time": "2025-10-26T08:01:48",
+    "magnitude": 2.9412551905940716,
+    "depth": 5.0,
+    "locality": "55 km north-west of Te Anau",
+    "lat": -45.117584229,
+    "lon": 167.100112915
+  },
+  {
+    "publicID": "2025p806293",
+    "time": "2025-10-26T07:53:02",
+    "magnitude": 3.1346980485407587,
+    "depth": 12.0,
+    "locality": "50 km north-west of Te Anau",
+    "lat": -45.183258057,
+    "lon": 167.152694702
+  },
+  {
+    "publicID": "2025p806276",
+    "time": "2025-10-26T07:43:57",
+    "magnitude": 2.4011563603249853,
+    "depth": 12.0,
+    "locality": "35 km south of Wellington",
+    "lat": -41.585269928,
+    "lon": 174.637817383
+  },
+  {
+    "publicID": "2025p806186",
+    "time": "2025-10-26T06:56:08",
+    "magnitude": 2.0909356363381373,
+    "depth": 92.5619125366211,
+    "locality": "25 km north-west of Taupo",
+    "lat": -38.57434845,
+    "lon": 175.816329956
+  },
+  {
+    "publicID": "2025p806133",
+    "time": "2025-10-26T06:27:53",
+    "magnitude": 0.6010698770714885,
+    "depth": 80.25377655029297,
+    "locality": "25 km north-east of Ohakune",
+    "lat": -39.271320343,
+    "lon": 175.667373657
+  },
+  {
+    "publicID": "2025p806024",
+    "time": "2025-10-26T05:29:52",
+    "magnitude": 2.6440199468391237,
+    "depth": 72.10896301269531,
+    "locality": "10 km south-west of Taupo",
+    "lat": -38.759002686,
+    "lon": 175.983825684
+  },
+  {
+    "publicID": "2025p806012",
+    "time": "2025-10-26T05:23:23",
+    "magnitude": 2.74128345308851,
+    "depth": 5.0,
+    "locality": "45 km north of Kaikoura",
+    "lat": -41.992515564,
+    "lon": 173.692169189
+  },
+  {
+    "publicID": "2025p805909",
+    "time": "2025-10-26T04:28:43",
+    "magnitude": 1.7987798910913515,
+    "depth": 19.890724182128906,
+    "locality": "20 km west of Pongaroa",
+    "lat": -40.533489227,
+    "lon": 175.934677124
+  },
+  {
+    "publicID": "2025p805792",
+    "time": "2025-10-26T03:26:30",
+    "magnitude": 2.9963161453177904,
+    "depth": 5.0,
+    "locality": "40 km north-west of Twizel",
+    "lat": -44.016971588,
+    "lon": 169.673950195
+  },
+  {
+    "publicID": "2025p805697",
+    "time": "2025-10-26T02:35:36",
+    "magnitude": 2.4221124749935856,
+    "depth": 120.89957427978516,
+    "locality": "80 km north of Whakatane",
+    "lat": -37.220741272,
+    "lon": 176.990219116
+  },
+  {
+    "publicID": "2025p805688",
+    "time": "2025-10-26T02:30:45",
+    "magnitude": 2.1520948410626892,
+    "depth": 58.921875,
+    "locality": "25 km north of French Pass",
+    "lat": -40.663170307,
+    "lon": 173.840106459
+  },
+  {
+    "publicID": "2025p805687",
+    "time": "2025-10-26T02:30:04",
+    "magnitude": 2.792652239101099,
+    "depth": 245.68431091308594,
+    "locality": "25 km north-west of Rotorua",
+    "lat": -37.974273682,
+    "lon": 176.020401001
+  },
+  {
+    "publicID": "2025p805677",
+    "time": "2025-10-26T02:24:50",
+    "magnitude": 2.1219514585484447,
+    "depth": 78.52791595458984,
+    "locality": "10 km north-west of Murchison",
+    "lat": -41.726165771,
+    "lon": 172.216705322
+  },
+  {
+    "publicID": "2025p805563",
+    "time": "2025-10-26T01:24:06",
+    "magnitude": 4.311633825239283,
+    "depth": 100.0,
+    "locality": "425 km north-east of Gisborne",
+    "lat": -35.412586212,
+    "lon": -179.414657593
+  },
+  {
+    "publicID": "2025p805444",
+    "time": "2025-10-26T00:20:52",
+    "magnitude": 2.31234022415959,
+    "depth": 114.47794342041016,
+    "locality": "30 km north of Whakatane",
+    "lat": -37.660469055,
+    "lon": 176.973693848
+  },
+  {
+    "publicID": "2025p805354",
+    "time": "2025-10-25T23:33:30",
+    "magnitude": 3.0511171622783753,
+    "depth": 131.4375,
+    "locality": "5 km south of Opunake",
+    "lat": -39.509550619,
+    "lon": 173.846104025
+  },
+  {
+    "publicID": "2025p805291",
+    "time": "2025-10-25T22:59:06",
+    "magnitude": 1.8964974948660251,
+    "depth": 21.617656707763672,
+    "locality": "5 km east of Wairoa",
+    "lat": -39.061218262,
+    "lon": 177.505905151
+  },
+  {
+    "publicID": "2025p805230",
+    "time": "2025-10-25T22:26:35",
+    "magnitude": 2.446464228225872,
+    "depth": 5.46484375,
+    "locality": "15 km north-east of Eketahuna",
+    "lat": -40.510496508,
+    "lon": 175.815762065
+  },
+  {
+    "publicID": "2025p805226",
+    "time": "2025-10-25T22:24:42",
+    "magnitude": 2.817255522800896,
+    "depth": 38.46875,
+    "locality": "30 km south of Whanganui",
+    "lat": -40.202057145,
+    "lon": 175.141317496
+  },
+  {
+    "publicID": "2025p805224",
+    "time": "2025-10-25T22:22:44",
+    "magnitude": 3.639116251785635,
+    "depth": 398.97637939453125,
+    "locality": "670 km north-east of Whangarei",
+    "lat": -32.031982422,
+    "lon": -179.908126831
+  },
+  {
+    "publicID": "2025p805133",
+    "time": "2025-10-25T21:35:20",
+    "magnitude": 1.8073233371323594,
+    "depth": 66.359375,
+    "locality": "5 km west of French Pass",
+    "lat": -40.914012546,
+    "lon": 173.752878827
+  },
+  {
+    "publicID": "2025p805131",
+    "time": "2025-10-25T21:32:01",
+    "magnitude": 4.734512512292445,
+    "depth": 300.0,
+    "locality": "1290 km north-east of Whangarei",
+    "lat": -25.993589401,
+    "lon": -178.173583984
+  },
+  {
+    "publicID": "2025p804934",
+    "time": "2025-10-25T19:49:19",
+    "magnitude": 1.8596272406543835,
+    "depth": 46.48729705810547,
+    "locality": "5 km east of Napier",
+    "lat": -39.519062042,
+    "lon": 177.00630188
+  },
+  {
+    "publicID": "2025p804897",
+    "time": "2025-10-25T19:29:27",
+    "magnitude": 1.708342658727473,
+    "depth": 27.389631271362305,
+    "locality": "20 km south of Hastings",
+    "lat": -39.86126709,
+    "lon": 176.773025513
+  },
+  {
+    "publicID": "2025p804894",
+    "time": "2025-10-25T19:27:40",
+    "magnitude": 2.046598699355638,
+    "depth": 35.583011627197266,
+    "locality": "10 km north-east of Waipukurau",
+    "lat": -39.927139282,
+    "lon": 176.635284424
+  },
+  {
+    "publicID": "2025p804625",
+    "time": "2025-10-25T17:04:33",
+    "magnitude": 1.9315412908347698,
+    "depth": 26.13252639770508,
+    "locality": "30 km north-east of Wairoa",
+    "lat": -38.915882111,
+    "lon": 177.749862671
+  },
+  {
+    "publicID": "2025p804532",
+    "time": "2025-10-25T16:14:48",
+    "magnitude": 2.4096333497797424,
+    "depth": 139.49221801757812,
+    "locality": "35 km north-west of Ohakune",
+    "lat": -39.19626236,
+    "lon": 175.075531006
+  },
+  {
+    "publicID": "2025p804471",
+    "time": "2025-10-25T15:42:11",
+    "magnitude": 2.3963608400058396,
+    "depth": 5.0,
+    "locality": "75 km north-east of Te Araroa",
+    "lat": -36.998943329,
+    "lon": 178.714401245
+  },
+  {
+    "publicID": "2025p804431",
+    "time": "2025-10-25T15:21:13",
+    "magnitude": 1.6264483925333122,
+    "depth": 5.9296875,
+    "locality": "15 km south-east of Palmerston North",
+    "lat": -40.437682157,
+    "lon": 175.776247187
+  },
+  {
+    "publicID": "2025p804429",
+    "time": "2025-10-25T15:20:13",
+    "magnitude": 2.05919692749007,
+    "depth": 5.46484375,
+    "locality": "20 km west of Tolaga Bay",
+    "lat": -38.362734923,
+    "lon": 178.019613221
+  },
+  {
+    "publicID": "2025p804428",
+    "time": "2025-10-25T15:19:28",
+    "magnitude": 2.901259437532119,
+    "depth": 39.3984375,
+    "locality": "35 km north-west of Levin",
+    "lat": -40.399857234,
+    "lon": 174.957652361
+  },
+  {
+    "publicID": "2025p804359",
+    "time": "2025-10-25T14:42:35",
+    "magnitude": 1.9164095176733977,
+    "depth": 5.0,
+    "locality": "15 km east of Arthur's Pass",
+    "lat": -42.975227356,
+    "lon": 171.756713867
+  },
+  {
+    "publicID": "2025p804215",
+    "time": "2025-10-25T13:26:03",
+    "magnitude": 1.951488726830765,
+    "depth": 23.427968978881836,
+    "locality": "25 km west of Porirua",
+    "lat": -41.124679565,
+    "lon": 174.523071289
+  },
+  {
+    "publicID": "2025p804186",
+    "time": "2025-10-25T13:10:35",
+    "magnitude": 2.2189003834544985,
+    "depth": 134.33734130859375,
+    "locality": "30 km east of Tauranga",
+    "lat": -37.690109253,
+    "lon": 176.530166626
+  },
+  {
+    "publicID": "2025p804177",
+    "time": "2025-10-25T13:05:49",
+    "magnitude": 2.2193768744149405,
+    "depth": 8.458589553833008,
+    "locality": "10 km south of Hanmer Springs",
+    "lat": -42.636886597,
+    "lon": 172.844482422
+  },
+  {
+    "publicID": "2025p804127",
+    "time": "2025-10-25T12:38:52",
+    "magnitude": 2.617782985424724,
+    "depth": 12.0,
+    "locality": "75 km north-east of Te Araroa",
+    "lat": -37.06817627,
+    "lon": 178.899429321
+  },
+  {
+    "publicID": "2025p804124",
+    "time": "2025-10-25T12:37:36",
+    "magnitude": 2.5655647391035483,
+    "depth": 5.0,
+    "locality": "75 km north-east of Te Araroa",
+    "lat": -37.052883148,
+    "lon": 178.89225769
+  },
+  {
+    "publicID": "2025p804030",
+    "time": "2025-10-25T11:47:14",
+    "magnitude": 1.6370248394833242,
+    "depth": 25.89769744873047,
+    "locality": "10 km north-east of Eketahuna",
+    "lat": -40.598304749,
+    "lon": 175.857635498
+  },
+  {
+    "publicID": "2025p803991",
+    "time": "2025-10-25T11:26:42",
+    "magnitude": 2.0895108700996525,
+    "depth": 51.99816513061523,
+    "locality": "75 km north of Te Kaha",
+    "lat": -37.058551788,
+    "lon": 177.463500977
+  },
+  {
+    "publicID": "2025p803934",
+    "time": "2025-10-25T10:56:22",
+    "magnitude": 2.0960351318826067,
+    "depth": 185.5200653076172,
+    "locality": "20 km south-west of Tauranga",
+    "lat": -37.868038177,
+    "lon": 176.059173584
+  },
+  {
+    "publicID": "2025p803666",
+    "time": "2025-10-25T08:33:40",
+    "magnitude": 1.9715830680137258,
+    "depth": 22.621591567993164,
+    "locality": "5 km north-east of Wairoa",
+    "lat": -38.996982574,
+    "lon": 177.513137817
+  },
+  {
+    "publicID": "2025p803634",
+    "time": "2025-10-25T08:16:37",
+    "magnitude": 2.469077021416348,
+    "depth": 130.15032958984375,
+    "locality": "75 km north-east of Tauranga",
+    "lat": -37.174125671,
+    "lon": 176.761947632
+  },
+  {
+    "publicID": "2025p803621",
+    "time": "2025-10-25T08:09:39",
+    "magnitude": 1.952660412668747,
+    "depth": 125.71340942382812,
+    "locality": "15 km north of Rotorua",
+    "lat": -37.958862305,
+    "lon": 176.291946411
+  },
+  {
+    "publicID": "2025p803619",
+    "time": "2025-10-25T08:08:28",
+    "magnitude": 2.7278769600367765,
+    "depth": 1.8615081310272217,
+    "locality": "Within 5 km of Haast",
+    "lat": -43.889202118,
+    "lon": 169.088592529
+  },
+  {
+    "publicID": "2025p803502",
+    "time": "2025-10-25T07:05:57",
+    "magnitude": 2.1677129365465984,
+    "depth": 5.0,
+    "locality": "15 km north-east of Christchurch",
+    "lat": -43.433437347,
+    "lon": 172.821411133
+  },
+  {
+    "publicID": "2025p803421",
+    "time": "2025-10-25T06:23:13",
+    "magnitude": 2.1201113924083104,
+    "depth": 3.8423802852630615,
+    "locality": "10 km north-west of Taupo",
+    "lat": -38.606132507,
+    "lon": 175.983306885
+  },
+  {
+    "publicID": "2025p803339",
+    "time": "2025-10-25T05:39:14",
+    "magnitude": 1.7368706979569835,
+    "depth": 9.6484375,
+    "locality": "20 km north-east of Taihape",
+    "lat": -39.517733775,
+    "lon": 175.984208062
+  },
+  {
+    "publicID": "2025p803337",
+    "time": "2025-10-25T05:38:17",
+    "magnitude": 2.535400584198946,
+    "depth": 143.20077514648438,
+    "locality": "45 km east of Collingwood",
+    "lat": -40.5442276,
+    "lon": 173.219680786
+  },
+  {
+    "publicID": "2025p803327",
+    "time": "2025-10-25T05:32:44",
+    "magnitude": 2.591109275719454,
+    "depth": 21.454608917236328,
+    "locality": "20 km east of Whanganui",
+    "lat": -39.896820068,
+    "lon": 175.297058105
+  },
+  {
+    "publicID": "2025p803278",
+    "time": "2025-10-25T05:06:27",
+    "magnitude": 1.922112286577649,
+    "depth": 18.7051944732666,
+    "locality": "45 km east of Stratford",
+    "lat": -39.256374359,
+    "lon": 174.816467285
+  },
+  {
+    "publicID": "2025p803159",
+    "time": "2025-10-25T04:02:43",
+    "magnitude": 4.270371174674873,
+    "depth": 33.0,
+    "locality": "545 km north-east of Whakatane",
+    "lat": -34.094017029,
+    "lon": -179.232925415
+  },
+  {
+    "publicID": "2025p803086",
+    "time": "2025-10-25T03:24:17",
+    "magnitude": 2.453636510212391,
+    "depth": 5.0,
+    "locality": "95 km north-east of Te Araroa",
+    "lat": -37.054027557,
+    "lon": 179.202163696
+  },
+  {
+    "publicID": "2025p803062",
+    "time": "2025-10-25T03:11:35",
+    "magnitude": 1.244399472662974,
+    "depth": 25.987958908081055,
+    "locality": "25 km east of Matawai",
+    "lat": -38.379779816,
+    "lon": 177.861633301
+  },
+  {
+    "publicID": "2025p802897",
+    "time": "2025-10-25T01:43:42",
+    "magnitude": 1.265725274670994,
+    "depth": 4.272249698638916,
+    "locality": "40 km west of Methven",
+    "lat": -43.673614502,
+    "lon": 171.107040405
+  },
+  {
+    "publicID": "2025p802884",
+    "time": "2025-10-25T01:36:51",
+    "magnitude": 1.4220469729267553,
+    "depth": 10.566762924194336,
+    "locality": "20 km north of Taihape",
+    "lat": -39.504993439,
+    "lon": 175.714447021
+  },
+  {
+    "publicID": "2025p802870",
+    "time": "2025-10-25T01:29:20",
+    "magnitude": 2.0092385740865475,
+    "depth": 5.0,
+    "locality": "40 km south-east of Haast",
+    "lat": -44.06230545,
+    "lon": 169.549560547
+  },
+  {
+    "publicID": "2025p802859",
+    "time": "2025-10-25T01:23:25",
+    "magnitude": 1.9567753083088,
+    "depth": 33.42816162109375,
+    "locality": "15 km north-east of Waipukurau",
+    "lat": -39.859722137,
+    "lon": 176.660598755
+  },
+  {
+    "publicID": "2025p802837",
+    "time": "2025-10-25T01:11:56",
+    "magnitude": 2.036684299654755,
+    "depth": 131.91445922851562,
+    "locality": "10 km north-east of Tokoroa",
+    "lat": -38.136009216,
+    "lon": 175.984329224
+  },
+  {
+    "publicID": "2025p802702",
+    "time": "2025-10-24T23:59:49",
+    "magnitude": 2.7182184649329373,
+    "depth": 2.930610418319702,
+    "locality": "Within 5 km of Haast",
+    "lat": -43.891521454,
+    "lon": 169.092315674
+  },
+  {
+    "publicID": "2025p802694",
+    "time": "2025-10-24T23:55:41",
+    "magnitude": 2.087234386524141,
+    "depth": 23.238161087036133,
+    "locality": "30 km east of Tolaga Bay",
+    "lat": -38.445613861,
+    "lon": 178.682479858
+  },
+  {
+    "publicID": "2025p802629",
+    "time": "2025-10-24T23:20:57",
+    "magnitude": 2.3478373894867604,
+    "depth": 21.044815063476562,
+    "locality": "30 km south-west of Whanganui",
+    "lat": -40.169158936,
+    "lon": 174.826339722
+  },
+  {
+    "publicID": "2025p802487",
+    "time": "2025-10-24T22:05:28",
+    "magnitude": 1.9704470776364076,
+    "depth": 5.0,
+    "locality": "Within 5 km of Haast",
+    "lat": -43.892364502,
+    "lon": 169.088500977
+  },
+  {
+    "publicID": "2025p802471",
+    "time": "2025-10-24T21:56:39",
+    "magnitude": 2.3070914682936445,
+    "depth": 79.57091522216797,
+    "locality": "15 km east of Nelson",
+    "lat": -41.309833527,
+    "lon": 173.457885742
+  },
+  {
+    "publicID": "2025p802431",
+    "time": "2025-10-24T21:35:43",
+    "magnitude": 1.6698632925774333,
+    "depth": 21.675800323486328,
+    "locality": "10 km east of Eketahuna",
+    "lat": -40.66519165,
+    "lon": 175.820877075
+  },
+  {
+    "publicID": "2025p802404",
+    "time": "2025-10-24T21:20:21",
+    "magnitude": 3.2204592740373754,
+    "depth": 33.0,
+    "locality": "410 km north-east of Gisborne",
+    "lat": -35.713764191,
+    "lon": -179.205245972
+  },
+  {
+    "publicID": "2025p802316",
+    "time": "2025-10-24T20:34:10",
+    "magnitude": 1.4667483880449497,
+    "depth": 26.08470916748047,
+    "locality": "25 km west of Tolaga Bay",
+    "lat": -38.357505798,
+    "lon": 177.990982056
+  },
+  {
+    "publicID": "2025p802283",
+    "time": "2025-10-24T20:16:45",
+    "magnitude": 1.429570937081273,
+    "depth": 24.362123489379883,
+    "locality": "15 km north-east of Eketahuna",
+    "lat": -40.585647583,
+    "lon": 175.86781311
+  },
+  {
+    "publicID": "2025p802135",
+    "time": "2025-10-24T18:58:00",
+    "magnitude": 1.978879207212795,
+    "depth": 23.25607109069824,
+    "locality": "5 km north-west of Masterton",
+    "lat": -40.888725281,
+    "lon": 175.60206604
+  },
+  {
+    "publicID": "2025p802111",
+    "time": "2025-10-24T18:44:51",
+    "magnitude": 1.8295938245309322,
+    "depth": 5.0,
+    "locality": "20 km south-east of Rotorua",
+    "lat": -38.255474091,
+    "lon": 176.416366577
+  },
+  {
+    "publicID": "2025p801933",
+    "time": "2025-10-24T17:10:23",
+    "magnitude": 1.2541214891890677,
+    "depth": 20.258739471435547,
+    "locality": "15 km north of Waipukurau",
+    "lat": -39.865047455,
+    "lon": 176.601654053
+  },
+  {
+    "publicID": "2025p801897",
+    "time": "2025-10-24T16:51:12",
+    "magnitude": 3.157061968616212,
+    "depth": 3.795825719833374,
+    "locality": "Within 5 km of Haast",
+    "lat": -43.894645691,
+    "lon": 169.081039429
+  },
+  {
+    "publicID": "2025p801871",
+    "time": "2025-10-24T16:37:09",
+    "magnitude": 2.582946398172346,
+    "depth": 259.4776916503906,
+    "locality": "75 km east of Whangamata",
+    "lat": -37.000377655,
+    "lon": 176.676712036
+  },
+  {
+    "publicID": "2025p801818",
+    "time": "2025-10-24T16:09:05",
+    "magnitude": 2.4134676414989764,
+    "depth": 90.14781951904297,
+    "locality": "25 km north of Opotiki",
+    "lat": -37.792160034,
+    "lon": 177.378768921
+  },
+  {
+    "publicID": "2025p801804",
+    "time": "2025-10-24T16:01:11",
+    "magnitude": 4.096999838783416,
+    "depth": 12.0,
+    "locality": "405 km north-east of Gisborne",
+    "lat": -35.760890961,
+    "lon": -179.198959351
+  },
+  {
+    "publicID": "2025p801803",
+    "time": "2025-10-24T16:00:25",
+    "magnitude": 2.4275483400121494,
+    "depth": 180.42431640625,
+    "locality": "130 km north of Te Kaha",
+    "lat": -36.589385986,
+    "lon": 177.308013916
+  },
+  {
+    "publicID": "2025p801753",
+    "time": "2025-10-24T15:33:21",
+    "magnitude": 3.703636073798138,
+    "depth": 279.96240234375,
+    "locality": "565 km north-east of Whakatane",
+    "lat": -33.753517151,
+    "lon": -179.443756104
+  },
+  {
+    "publicID": "2025p801718",
+    "time": "2025-10-24T15:15:39",
+    "magnitude": 2.187872785095623,
+    "depth": 118.32858276367188,
+    "locality": "15 km north-west of Whakatane",
+    "lat": -37.841804504,
+    "lon": 176.84022522
+  },
+  {
+    "publicID": "2025p801690",
+    "time": "2025-10-24T15:00:42",
+    "magnitude": 1.151061392734117,
+    "depth": 26.97304916381836,
+    "locality": "5 km east of Taihape",
+    "lat": -39.672920227,
+    "lon": 175.909561157
+  },
+  {
+    "publicID": "2025p801640",
+    "time": "2025-10-24T14:34:00",
+    "magnitude": 2.5897893712274946,
+    "depth": 132.41647338867188,
+    "locality": "20 km east of Stratford",
+    "lat": -39.413902283,
+    "lon": 174.523895264
+  },
+  {
+    "publicID": "2025p801629",
+    "time": "2025-10-24T14:27:24",
+    "magnitude": 4.236624428023395,
+    "depth": 12.0,
+    "locality": "405 km north-east of Gisborne",
+    "lat": -35.709308624,
+    "lon": -179.237640381
+  },
+  {
+    "publicID": "2025p801624",
+    "time": "2025-10-24T14:25:12",
+    "magnitude": 2.578420518047719,
+    "depth": 5.0,
+    "locality": "290 km north-east of Te Araroa",
+    "lat": -35.977481842,
+    "lon": -179.076568604
+  },
+  {
+    "publicID": "2025p801528",
+    "time": "2025-10-24T13:34:35",
+    "magnitude": 3.50504427779888,
+    "depth": 49.54410171508789,
+    "locality": "30 km south-west of Milford Sound",
+    "lat": -44.815513611,
+    "lon": 167.55140686
+  },
+  {
+    "publicID": "2025p801499",
+    "time": "2025-10-24T13:19:08",
+    "magnitude": 1.6647854008090217,
+    "depth": 128.55133056640625,
+    "locality": "35 km north-east of Taumarunui",
+    "lat": -38.624927521,
+    "lon": 175.570724487
+  },
+  {
+    "publicID": "2025p801496",
+    "time": "2025-10-24T13:17:03",
+    "magnitude": 2.5163433052529016,
+    "depth": 187.6400604248047,
+    "locality": "120 km north of Te Kaha",
+    "lat": -36.662887573,
+    "lon": 177.474914551
+  },
+  {
+    "publicID": "2025p801410",
+    "time": "2025-10-24T12:31:39",
+    "magnitude": 1.1129078027229913,
+    "depth": 18.857295989990234,
+    "locality": "20 km north-west of Ohakune",
+    "lat": -39.244060516,
+    "lon": 175.308441162
+  },
+  {
+    "publicID": "2025p801365",
+    "time": "2025-10-24T12:07:38",
+    "magnitude": 1.0706072268289237,
+    "depth": 26.327165603637695,
+    "locality": "15 km south of Dannevirke",
+    "lat": -40.373855591,
+    "lon": 176.106384277
+  },
+  {
+    "publicID": "2025p801353",
+    "time": "2025-10-24T12:01:06",
+    "magnitude": 1.8563060652194683,
+    "depth": 48.69363784790039,
+    "locality": "15 km north-west of Ruatoria",
+    "lat": -37.790592194,
+    "lon": 178.160995483
+  },
+  {
+    "publicID": "2025p801333",
+    "time": "2025-10-24T11:50:26",
+    "magnitude": 1.77039365753311,
+    "depth": 46.92665100097656,
+    "locality": "35 km north-east of Wairoa",
+    "lat": -38.776542664,
+    "lon": 177.62487793
+  },
+  {
+    "publicID": "2025p801291",
+    "time": "2025-10-24T11:28:07",
+    "magnitude": 3.610498014156761,
+    "depth": 12.0,
+    "locality": "405 km north-east of Gisborne",
+    "lat": -35.690101624,
+    "lon": -179.287872314
+  }
+]
