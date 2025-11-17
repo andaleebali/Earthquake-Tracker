@@ -1,159 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Leaflet -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-        <!-- CSS -->
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <h1>New Zealand Earthquake Tracker</h1>
-        <div class="dashboard">
-                <div class="column left">
-                    <div class="filters">
-                        <div class="filter" id="mag-slider">
-                            <h3>Minimum Magnitude:</h3>
-                            <input type="range" min="0" max="10" value="1" step="1" class="slider" id="mag-range">
-                            <!-- Number labels -->
-                            <div class="slider-labels">
-                                <span>0</span>
-                                <span>1</span>
-                                <span>2</span>
-                                <span>3</span>
-                                <span>4</span>
-                                <span>5</span>
-                                <span>6</span>
-                                <span>7</span>
-                                <span>8</span>
-                                <span>9</span>
-                                <span>10</span>
-                            </div>
-                        </div> 
-                        <div class="filter"  id="depth-slider">
-                            <h3>Maximum Depth (km):</h3>
-                            <input type="range" min="0" max="100" value="40" step="10" class="slider" id="depth-range">
-                            <!-- Number labels -->
-                            <div class="slider-labels">
-                                <span>0</span>
-                                <span>10</span>
-                                <span>20</span>
-                                <span>30</span>
-                                <span>40</span>
-                                <span>50</span>
-                                <span>60</span>
-                                <span>70</span>
-                                <span>80</span>
-                                <span>90</span>
-                                <span>100</span>
-                            </div>
-                        </div>
-                        <div class="filter">
-                            <h3>Time Range (last X hours):</h3>
-                            <select id="time-range" class="dropdown">
-                                <option value="1">1 Hour</option>
-                                <option value="6">6 Hours</option>
-                                <option value="12">12 Hours</option>
-                                <option value="24" selected>24 Hours</option>
-                                <option value="168">7 Days</option>
-                            </select>
-                        </div>                
-                    </div>
-                    <div class="symbology">
-                        <h3>Key</h3>
-                        <div class="key magnitude-key">
-                            <table>
-                                <tr>
-                                    <th>Magnitude</th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <svg width="10" height="10">
-                                            <circle cx="5" cy="5" r="4" stroke="green" stroke-width="1" fill="yellow" />
-                                        </svg>
-                                    </td>
-                                    <td>0 - 3</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <svg width="10" height="10">
-                                            <circle cx="5" cy="5" r="4" stroke="green" stroke-width="1" fill="yellow" />
-                                        </svg>
-                                    </td>
-                                    <td>3 - 5</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <svg width="10" height="10">
-                                            <circle cx="5" cy="5" r="4" stroke="green" stroke-width="1" fill="yellow" />
-                                        </svg>
-                                    </td>
-                                    <td>5 + </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="key depth-key">
-                            <table>
-                                <tr>
-                                    <th>Depth</th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <svg width="10" height="10">
-                                            <circle cx="5" cy="5" r="4" stroke="green" stroke-width="1" fill="yellow" />
-                                        </svg>
-                                    </td>
-                                    <td> 0 - 3</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <svg width="10" height="10">
-                                            <circle cx="5" cy="5" r="4" stroke="green" stroke-width="1" fill="yellow" />
-                                        </svg>
-                                    </td>
-                                    <td> 0 - 3</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <svg width="10" height="10">
-                                            <circle cx="5" cy="5" r="4" stroke="green" stroke-width="1" fill="yellow" />
-                                        </svg>
-                                    </td>
-                                    <td> 0 - 3</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
 
-                        
-                </div>
-                <div class="column middle">
-                    <div id="map"></div>
-                    <div class="indicators">
-                        <div class="indicator" id="largest-mag-ind">
-                            <h3>Largest Magnitude</h3>
-                            <h4 id="largest-mag-value">No Data</h4>
-                        </div>
-                        <div class="indicator" id="total-quakes-ind">
-                            <h3>Total Quakes</h3>
-                            <h4 id="total-quakes-value">No Data</h4>
-                        </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rethink Sans">
+    <!-- Charts js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>New Zealand Earthquake Tracker</h1>
+    </header>
+    <div class="dashboard">
+        <div class="column left">
+            <div class="card">
+                <div class="filter" id="mag-slider">
+                    <h4>Minimum Magnitude:</h4>
+                    <input type="range" min="0" max="10" value="1" step="1" class="slider" id="mag-range">
+                    <!-- Number labels -->
+                    <div class="slider-labels">
+                        <span>0</span>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
                     </div>
                 </div>
+                <div class="filter" id="depth-slider">
+                    <h4>Maximum Depth (km):</h4>
+                    <input type="range" min="0" max="100" value="40" step="10" class="slider" id="depth-range">
+                    <!-- Number labels -->
+                    <div class="slider-labels">
+                        <span>0</span>
+                        <span>10</span>
+                        <span>20</span>
+                        <span>30</span>
+                        <span>40</span>
+                        <span>50</span>
+                        <span>60</span>
+                        <span>70</span>
+                        <span>80</span>
+                        <span>90</span>
+                        <span>100</span>
+                    </div>
+                </div>
+                <div class="filter">
+                    <h4>Time Range (last X hours):</h4>
+                    <select id="time-range" class="dropdown">
+                        <option value="1">1 Hour</option>
+                        <option value="6">6 Hours</option>
+                        <option value="12">12 Hours</option>
+                        <option value="24" selected>24 Hours</option>
+                        <option value="168">7 Days</option>
+                    </select>
+                </div>
+            </div>
+            <div class="symbology">
+<div class="map-key card">
+    <h3>Magnitude (Color)</h3>
+
+    <div class="key-item">
+        <span class="color-box" style="background:#90EE90;"></span>
+        <span>Minor &lt; 3.0</span>
+    </div>
+
+    <div class="key-item">
+        <span class="color-box" style="background:#FFD447;"></span>
+        <span>Light–Moderate 3.0–4.9</span>
+    </div>
+
+    <div class="key-item">
+        <span class="color-box" style="background:#FF8A3D;"></span>
+        <span>Strong 5.0–5.9</span>
+    </div>
+
+    <div class="key-item">
+        <span class="color-box" style="background:#FF3B3B;"></span>
+        <span>Severe ≥ 6.0</span>
+    </div>
+</div>
+
+
+<div class="depth-key card">
+    <h3>Depth (Circle Size)</h3>
+
+    <div class="key-item">
+        <svg width="28" height="28">
+            <circle cx="14" cy="14" r="12" fill="none" stroke="#555" stroke-width="2"></circle>
+        </svg>
+        <span>Shallow &lt; 30 km</span>
+    </div>
+
+    <div class="key-item">
+        <svg width="28" height="28">
+            <circle cx="14" cy="14" r="8" fill="none" stroke="#555" stroke-width="2"></circle>
+        </svg>
+        <span>Intermediate 30–70 km</span>
+    </div>
+
+    <div class="key-item">
+        <svg width="28" height="28">
+            <circle cx="14" cy="14" r="4" fill="none" stroke="#555" stroke-width="2"></circle>
+        </svg>
+        <span>Deep ≥ 70 km</span>
+    </div>
+</div>
+
+            </div>
+
 
         </div>
-        <footer>
-            
-        </footer>
-    </body>
-    <script>
-        var map = L.map('map').setView([-41.5, -186], 5);
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            }).addTo(map);
-    </script>
+        <div class="column middle">
+            <div id="map"></div>
+            <div class="indicators">
+                <div class="card" id="largest-mag-ind">
+                    <center>
+                        <h3>Largest Magnitude</h3>
+                        <h2 id="largest-mag-value">No Data</h2>
+                    </center>
+                </div>
+                <div class="card" id="total-quakes-ind">
+                    <center>
+                        <h3>Total Quakes</h3>
+                        <h2 id="total-quakes-value">No Data</h2>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div class="column right">
+            <div class="card most-recent">
+                <h3>Most Recent</h3>
+                <div style="display:flex; align-items:center;">
+                    <svg width="30" height="30">
+                        <circle cx="15" cy="15" r="15" fill="rgb(56,76,98)" />
+                        <text x="7" y="20" fill="white" font-size="12">4.5</text>
+                    </svg>
+                    <div style="margin-left:10px;">
+                        <strong>${quake.location}</strong><br>
+                        <small>${new Date(quake.time).toLocaleString()}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Earthquake Events Over Time</h3>
+                <canvas id="lineChart"></canvas>
+            </div>
+
+            <div class="card">
+                <h3>Magnitude Distribution</h3>
+                <canvas id="barChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Data Source: GeoNet Last Updated: 23/04/2025 11:45pm
+    </footer>
+</body>
+
+<script>
+    var map = L.map('map').setView([-41.5, -186], 5);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+  // Line Chart
+  new Chart(document.getElementById("lineChart"), {
+    type: "line",
+    data: {
+      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      datasets: [{
+        label: "Earthquakes",
+        data: [150, 180, 130, 200, 250, 220, 300],
+        borderWidth: 2,
+        fill: false
+      }]
+    }
+  });
+
+  // Bar Chart
+  new Chart(document.getElementById("barChart"), {
+    type: "bar",
+    data: {
+      labels: ["M3-3.9", "M4-4.9", "M5-5.9", "M6-6.9", "M7+"],
+      datasets: [{
+        label: "Count",
+        data: [300, 500, 220, 80, 12],
+        borderWidth: 1
+      }]
+    }
+  });
+
+  // Horizontal Bar Chart
+  new Chart(document.getElementById("horizontalChart"), {
+    type: "bar",
+    data: {
+      labels: ["Japan", "Chile", "Indonesia", "Mexico", "Turkey"],
+      datasets: [{
+        label: "Magnitude",
+        data: [7.2, 6.9, 6.7, 6.5, 6.4],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      indexAxis: "y"
+    }
+  });
+
+
+</script>
+
 </html>
